@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import { Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const socialLinks = [
   {
@@ -13,15 +16,18 @@ const socialLinks = [
     href: "claudianschuster@gmail.com",
     icon: Mail,
   },
-  { 
-    name: "Whatsapp", 
-    href: "https://wa.me/+554991942425", 
-    icon: Phone 
+  {
+    name: "Whatsapp",
+    href: "https://wa.me/+554991942425",
+    icon: Phone,
   },
 ];
 
 const contactInfo = [
-  { name: "Instagram", href: "https://www.instagram.com/retrato23_fotografia/" },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/retrato23_fotografia/",
+  },
   { name: "Email", href: "claudianschuster@gmail.com" },
   { name: "Whatsapp", href: "+55 49 9 9194-2425" },
 ];
@@ -34,6 +40,8 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   return (
     <footer className="bg-secondary border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -41,12 +49,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <Image src="/dark_logo.png" alt="Retrato 23" width={100} height={100} />
+              <Image
+                src={theme === "dark" ? "/light_logo.png" : "/dark_logo.png"}
+                alt="Retrato 23"
+                width={100}
+                height={100}
+              />
             </Link>
             <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
-              Photography that values your essence. Capturing authentic moments with elegance and artistry, creating timeless images that tell your unique story.
+              Fotografia que valoriza sua essência. Capturando momentos
+              autênticos com elegância e arte, criando imagens imortais que
+              contam sua história única.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -82,17 +97,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="font-display font-light text-xl text-foreground mb-6">
               Contato
             </h3>
             <div className="space-y-4 text-sm text-muted-foreground">
-
-            {contactInfo.map((social) => (
-                <div>
-                <p className="font-medium text-foreground mb-1">{social.name}</p>
-                <p>{social.href}</p>
+              {contactInfo.map((social) => (
+                <div key={social.name}>
+                  <p className="font-medium text-foreground mb-1">
+                    {social.name}
+                  </p>
+                  <p>{social.href}</p>
                 </div>
               ))}
             </div>
@@ -104,10 +119,16 @@ export default function Footer() {
             © {new Date().getFullYear()} Retrato 23. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <Link href="#" className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
+            <Link
+              href="#"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300"
+            >
               Privacy Policy
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
+            <Link
+              href="#"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300"
+            >
               Terms of Service
             </Link>
           </div>

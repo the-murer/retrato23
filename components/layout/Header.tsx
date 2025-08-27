@@ -6,9 +6,11 @@ import { Button } from "@/stories/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme/theme-toggle";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   const navigation = [
     { name: "Portifólio", href: "#showcase" },
@@ -23,14 +25,14 @@ export default function Header() {
         <div className="flex h-20 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-3">
-            <Image 
-                  src="/dark_logo.png" 
-                  alt="Elegant portrait photography" 
-                  width={50} 
-                  height={50} 
-                  className="object-cover"
-                  priority
-                />
+              <Image
+                src={theme === "dark" ? "/light_logo.png" : "/dark_logo.png"}
+                alt="Elegant portrait photography"
+                width={50}
+                height={50}
+                className="object-cover"
+                priority
+              />
             </Link>
           </div>
 
