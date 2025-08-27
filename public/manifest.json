@@ -1,0 +1,27 @@
+{
+  "name": "Bruno Murer - Portfolio",
+  "short_name": "Bruno Murer",
+  "description": "Portfolio of Bruno Murer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "designer"],
+  "lang": "en",
+  "dir": "ltr"
+}
