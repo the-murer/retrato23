@@ -1,34 +1,36 @@
 import Link from "next/link";
 import { Instagram, Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://www.instagram.com/retrato23/",
+    href: "https://www.instagram.com/retrato23_fotografia/",
     icon: Instagram,
   },
   {
     name: "Email",
-    href: "mailto:hello@retrato23.com",
+    href: "claudianschuster@gmail.com",
     icon: Mail,
   },
   { 
-    name: "Phone", 
-    href: "tel:+1234567890", 
+    name: "Whatsapp", 
+    href: "https://wa.me/+554991942425", 
     icon: Phone 
-  },
-  { 
-    name: "Location", 
-    href: "#", 
-    icon: MapPin 
   },
 ];
 
+const contactInfo = [
+  { name: "Instagram", href: "https://www.instagram.com/retrato23_fotografia/" },
+  { name: "Email", href: "claudianschuster@gmail.com" },
+  { name: "Whatsapp", href: "+55 49 9 9194-2425" },
+];
+
 const quickLinks = [
-  { name: "Portfolio", href: "#showcase" },
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#cta" },
+  { name: "Portifólio", href: "#showcase" },
+  { name: "Serviços", href: "#services" },
+  { name: "Sobre", href: "#about" },
+  { name: "Contato", href: "#cta" },
 ];
 
 export default function Footer() {
@@ -39,14 +41,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg">
-                <span className="text-primary-foreground font-display font-light text-2xl">
-                  R
-                </span>
-              </div>
-              <span className="font-display font-light text-3xl text-foreground">
-                Retrato 23
-              </span>
+              <Image src="/dark_logo.png" alt="Retrato 23" width={100} height={100} />
             </Link>
             <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
               Photography that values your essence. Capturing authentic moments with elegance and artistry, creating timeless images that tell your unique story.
@@ -71,7 +66,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="font-display font-light text-xl text-foreground mb-6">
-              Quick Links
+              Links Rápidos
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -90,21 +85,16 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="font-display font-light text-xl text-foreground mb-6">
-              Contact
+              Contato
             </h3>
             <div className="space-y-4 text-sm text-muted-foreground">
-              <div>
-                <p className="font-medium text-foreground mb-1">Email</p>
-                <p>hello@retrato23.com</p>
-              </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">Phone</p>
-                <p>+1 (555) 123-4567</p>
-              </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">Location</p>
-                <p>New York, NY</p>
-              </div>
+
+            {contactInfo.map((social) => (
+                <div>
+                <p className="font-medium text-foreground mb-1">{social.name}</p>
+                <p>{social.href}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
