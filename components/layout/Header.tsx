@@ -72,7 +72,7 @@ export default function Header() {
                 )}
               </Button>
             </div>
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </div>
         </div>
 
