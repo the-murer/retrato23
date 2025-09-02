@@ -30,7 +30,7 @@ export default function About({ name, href }: AppSection) {
               {/* Main image */}
               <div className="relative bg-background rounded-3xl shadow-2xl overflow-hidden transform -rotate-1">
                 <Image 
-                  src="/claudia.JPG" 
+                  src="/claudia.png" 
                   alt="Photographer portrait" 
                   width={600} 
                   height={750} 

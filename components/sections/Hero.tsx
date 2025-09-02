@@ -11,7 +11,7 @@ export default function Hero({ name, href }: AppSection) {
       tone="default"
       background={{
         type: "image",
-        src: "/hero.jpg"
+        src: "/hero.png"
       }}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
