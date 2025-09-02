@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { Typography } from ".";
+import { Typography } from "../../components/common/typography";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "Example/Typography",
   component: Typography,
@@ -16,7 +15,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Title: Story = {
   args: {
     variant: "title",

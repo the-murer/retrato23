@@ -1,6 +1,6 @@
 "use client";
 import { Typography } from "@/stories/typography";
-import Section from "@/components/sections/Section";
+import Section from "@/components/common/section";
 
 export default function CTA() {
   return (

@@ -2,15 +2,15 @@ import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
   "stories": [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+    // "../stories/**/*.mdx",
+    "./stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "./stories/**/*.stories.tsx",
+    "./preview.tsx",
   ],
   "addons": [
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test",
-    "@storybook/addon-styling-webpack"
   ],
   "framework": {
     "name": "@storybook/nextjs",
@@ -20,4 +20,5 @@ const config: StorybookConfig = {
     "../public"
   ]
 };
+
 export default config;

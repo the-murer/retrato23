@@ -1,7 +1,7 @@
 "use client";
 import { Typography } from "@/stories/typography";
 import Image from "next/image";
-import Section from "@/components/sections/Section";
+import Section from "@/components/common/section";
 
 export default function About() {
   return (

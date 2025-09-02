@@ -1,7 +1,7 @@
 "use client";
 import { Typography } from "@/stories/typography";
 import { Camera, Heart, Palette, Briefcase, Calendar, Users } from "lucide-react";
-import Section from "@/components/sections/Section";
+import Section from "@/components/common/section";
 
 const services = [
   {

@@ -20,7 +20,7 @@ const sizeToClasses: Record<NonNullable<SectionHeaderProps["size"]>, { title: st
   lg: { title: "text-4xl sm:text-5xl lg:text-6xl", subtitle: "text-xl sm:text-2xl", overline: "text-xs" },
 };
 
-export default function SectionHeader({
+export function SectionHeader({
   overline,
   title,
   subtitle,

@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/ui/project-card";
+import { ProjectCard } from "@/components/ui/projectCard";
 
 export interface Project {
   id: string;

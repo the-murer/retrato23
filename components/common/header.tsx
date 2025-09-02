@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/stories/button";
+import { Button } from "./button";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./theme/theme-toggle";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 

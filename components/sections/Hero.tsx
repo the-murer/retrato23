@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "@/stories/button";
+import { Button } from "../../stories/button";
 import Image from "next/image";
-import Section from "@/components/sections/Section";
+import { Section } from "@/components/common/section";
 
 export default function Hero() {
   return (

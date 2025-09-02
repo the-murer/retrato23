@@ -10,7 +10,7 @@ type Breakpoints = {
   default?: number; // >= last
 };
 
-const Carousel = <T,>({
+export const Carousel = <T,>({
   items,
   carouselItem,
   showControls = true,
@@ -171,5 +171,3 @@ const Carousel = <T,>({
     </div>
   );
 };
-
-export default Carousel;

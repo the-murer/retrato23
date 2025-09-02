@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { Typography } from "../typography";
-import { Card } from "./index";
+import React from "react";
+import { Card } from "../../components/common/card";
 import Image from "next/image";
-import { Button } from "../button";
+import { Button } from "../../components/common/button";
+import { Typography } from "../../components/common/typography";
 
 const meta = {
   title: "Example/Card",

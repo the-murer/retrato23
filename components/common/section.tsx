@@ -59,7 +59,7 @@ const paddingToClass: Record<NonNullable<SectionProps["padding"]>, string> = {
   xl: "py-24 sm:py-32 lg:py-40",
 };
 
-export default function Section({
+export function Section({
   id,
   tone = "default",
   background = { type: "solid", color: "default" },
@@ -113,10 +113,22 @@ export default function Section({
       style={imageStyle}
     >
       {overlayClassName && (
-        <div className={cn("absolute inset-0 pointer-events-none", overlayClassName)} />
+        <div
+          className={cn(
+            "absolute inset-0 pointer-events-none",
+            overlayClassName
+          )}
+        />
       )}
 
-      <div className={cn("relative w-full", container && "container mx-auto px-4 sm:px-6 lg:px-8")}>{children}</div>
+      <div
+        className={cn(
+          "relative w-full",
+          container && "container mx-auto px-4 sm:px-6 lg:px-8"
+        )}
+      >
+        {children}
+      </div>
     </section>
   );
-} 
+}

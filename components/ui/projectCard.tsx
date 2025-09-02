@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/stories/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../common/card"
 
 interface ProjectCardProps {
   title: string
