@@ -1,7 +1,8 @@
 "use client";
-import { Typography } from "@/stories/typography";
+import { Typography } from "@/components/common/typography";
 import { Camera, Heart, Palette, Briefcase, Calendar, Users } from "lucide-react";
-import Section from "@/components/common/section";
+import { Section } from "@/components/common/section";
+import { AppSection } from "@/lib/commons";
 
 const services = [
   {
@@ -30,10 +31,10 @@ const services = [
   },
 ];
 
-export default function Services() {
+export default function Services({ name, href }: AppSection) {
   return (
     <Section
-      id="services"
+      id={href}
       tone="default"
       background={{ type: "solid", color: "secondary" }}
       padding="xl"

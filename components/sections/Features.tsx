@@ -1,7 +1,8 @@
 "use client";
-import { Typography } from "@/stories/typography";
+import { Typography } from "@/components/common/typography";
 import Image from "next/image";
-import Section from "@/components/common/section";
+import { Section } from "@/components/common/section";
+import { AppSection } from "@/lib/commons";
 
 const showcaseImages = [
   {
@@ -24,10 +25,10 @@ const showcaseImages = [
   },
 ];
 
-export default function Showcase() {
+export default function Showcase({ name, href }: AppSection) {
   return (
     <Section
-      id="showcase"
+      id={href}
       tone="default"
       background={{ type: "gradient", from: "from-secondary-50", to: "to-primary-50", directionClass: "bg-gradient-to-r" }}
       padding="xl"

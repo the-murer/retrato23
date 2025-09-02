@@ -1,12 +1,13 @@
 "use client";
-import { Typography } from "@/stories/typography";
+import { Typography } from "@/components/common/typography";
 import Image from "next/image";
-import Section from "@/components/common/section";
+import { Section } from "@/components/common/section";
+import { AppSection } from "@/lib/commons";
 
-export default function About() {
+export default function About({ name, href }: AppSection) {
   return (
     <Section
-      id="about"
+      id={href}
       tone="default"
       background={{ type: "solid", color: "secondary" }}
       padding="xl"

@@ -6,17 +6,11 @@ import { Button } from "./button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { appSections } from "@/lib/commons";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useTheme();
-
-  const navigation = [
-    { name: "Portifólio", href: "#showcase" },
-    { name: "Serviços", href: "#services" },
-    { name: "Sobre", href: "#about" },
-    { name: "Contato", href: "#cta" },
-  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 backdrop-blur-md bg-background/80">
@@ -36,10 +30,10 @@ export default function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
+            {appSections.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={`#${item.href}`}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium text-sm uppercase tracking-wide"
               >
                 {item.name}
@@ -78,7 +72,7 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border/50 bg-background/95 backdrop-blur-md">
-              {navigation.map((item) => (
+              {appSections.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -93,7 +87,7 @@ export default function Header() {
                   size="sm"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-medium transition-colors duration-300"
                 >
-                  Book Session
+                  Agendar Sessão
                 </Button>
               </div>
             </div>

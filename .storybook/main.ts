@@ -8,9 +8,9 @@ const config: StorybookConfig = {
     "./preview.tsx",
   ],
   "addons": [
-    "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
+    "@storybook/addon-docs"
   ],
   "framework": {
     "name": "@storybook/nextjs",

@@ -1,11 +1,12 @@
 "use client";
-import { Typography } from "@/stories/typography";
-import Section from "@/components/common/section";
+import { Typography } from "@/components/common/typography";
+import { AppSection } from "@/lib/commons";
+import { Section } from "@/components/common/section";
 
-export default function CTA() {
+export default function CTA({ name, href }: AppSection) {
   return (
     <Section
-      id="cta"
+      id={href}
       tone="primary"
       background={{ type: "gradient", directionClass: "bg-gradient-to-br", from: "from-primary-600", to: "to-primary-800" }}
       padding="xl"

@@ -26,7 +26,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-background">
       <main>
         <GalleryShowcase
-          projects={projects}
+          items={projects}
           title="Meus trabalhos"
           description="Conheça alguns dos meus trabalhos."
         />

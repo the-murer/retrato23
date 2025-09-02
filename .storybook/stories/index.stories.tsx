@@ -5,12 +5,11 @@ import { Card } from "../../components/common/card";
 import { Section } from "../../components/common/section";
 import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
-// import { Input } from "../../components/common/input";
-// import ProjectCard from "../../components/ui/projectCard";
-// import Carousel from "../../components/ui/carousel";
+import { Carousel } from "../../components/ui/carousel";
 import { SectionHeader } from "../../components/ui/sectionHeader";
 import { GalleryShowcase } from "../../components/ui/galleryShowcase";
 import React from "react";
+import Image from "next/image";
 
 const meta = {
   title: "Overview/Component Library",
@@ -33,12 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const ComponentShowcase: Story = {
   render: () => (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <Header />
-
-      {/* Main content */}
       <main className="pt-20">
-        {/* Hero Section */}
         <Section tone="primary" padding="xl">
           <div className="text-center">
             <Typography variant="h1" className="mb-6">
@@ -161,7 +155,7 @@ export const ComponentShowcase: Story = {
 
             <div className="mt-12">
               <GalleryShowcase
-                projects={[
+                items={[
                   {
                     imageUrl:
                       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
@@ -297,10 +291,63 @@ export const ComponentShowcase: Story = {
             </div>
           </div>
         </Section>
-      </main>
 
-      {/* Footer */}
-      <Footer />
+        {/* Carousel Section */}
+        <Section padding="lg">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader
+              title="Carousel Components"
+              subtitle="Visual Content"
+            />
+          </div>
+          <Carousel
+            items={[
+              {
+                imageUrl:
+                  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+                imageAlt: "Portrait Photography",
+                description: "Professional Portraits",
+                id: "1",
+                title: "1",
+              },
+              {
+                imageUrl:
+                  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
+                imageAlt: "Nature Photography",
+                description: "Natural Beauty",
+                id: "2",
+                title: "2",
+              },
+              {
+                imageUrl:
+                  "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
+                imageAlt: "Abstract Art",
+                description: "Creative Vision",
+                id: "3",
+                title: "3",
+              },
+            ]}
+            carouselItem={({ imageUrl, imageAlt, description, id, title }) => (
+              <>
+                <Card.Header>
+                  <Card.Title>{title}</Card.Title>
+                </Card.Header>
+                <Card.Content>
+                  <Image
+                    width={100}
+                    height={100}
+                    src={imageUrl}
+                    alt={imageAlt}
+                  />
+                </Card.Content>
+                <Card.Footer>
+                  <Typography variant="caption">{description}</Typography>
+                </Card.Footer>
+              </>
+            )}
+          />
+        </Section>
+      </main>
     </div>
   ),
 };

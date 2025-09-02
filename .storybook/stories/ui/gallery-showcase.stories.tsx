@@ -15,7 +15,7 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    images: {
+    items: {
       control: { type: "object" },
       description: "Array of image objects with src, alt, and optional caption",
     },
@@ -35,7 +35,7 @@ const meta = {
     },
   },
   args: {
-    images: [
+    items: [
       {
         src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
         alt: "Portrait Photography 1",

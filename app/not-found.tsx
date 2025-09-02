@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/stories/button"
+import { Button } from "@/components/common/button"
 import { Home, ArrowLeft } from "lucide-react"
 
 export default function NotFound() {

@@ -14,13 +14,13 @@ export interface Project {
 }
 
 interface GalleryShowcaseProps {
-  projects: Project[];
+  items: Project[];
   title?: string;
   description?: string;
 }
 
 export function GalleryShowcase({
-  projects,
+  items,
   title = "Projetos",
   description,
 }: GalleryShowcaseProps) {
@@ -39,7 +39,7 @@ export function GalleryShowcase({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project) => (
+          {items.map((project) => (
             <ProjectCard
               key={project.id}
               title={project.title}

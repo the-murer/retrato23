@@ -1,25 +1,24 @@
 "use client";
-import { Button } from "../../stories/button";
+import { Button } from "../common/button";
 import Image from "next/image";
 import { Section } from "@/components/common/section";
+import { AppSection } from "@/lib/commons";
 
-export default function Hero() {
+export default function Hero({ name, href }: AppSection) {
   return (
     <Section
-      id="hero"
+      id={href}
       tone="default"
       background={{
         type: "image",
-        src: "/hero.jpg",
+        src: "/hero.jpg"
       }}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center min-h-[80vh]">
-          {/* Text Content - Left Side */}
           <div className="space-y-10 text-white">
             <div className="space-y-8">
-              {/* Main title with dramatic styling */}
               <div className="space-y-4 flex justify-center items-center">
                 <Image
                   src="/light_logo.png"
@@ -33,7 +32,6 @@ export default function Hero() {
             </div>
 
             <div className="space-y-8">
-              {/* Enhanced button group */}
               <div className="flex flex-col sm:flex-row gap-6">
                 <Button
                   variant="outline"

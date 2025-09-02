@@ -6,6 +6,7 @@ import Services from "@/components/sections/Services";
 import About from "@/components/sections/Experience";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/common/footer";
+import { appRender } from "@/lib/commons";
 
 export const metadata: Metadata = {
   title: "Retrato 23 - Fotos profissionais para profissionais",
@@ -16,13 +17,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen" suppressHydrationWarning>
-      <main>
-        <Hero />
-        <Showcase />
-        <Services />
-        <About />
-        <CTA />
-      </main>
+      <main>{appRender.map(({ render, ...section }) => render(section))}</main>
     </div>
   );
 }
