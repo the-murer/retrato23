@@ -2,14 +2,14 @@
 
 ## 🎨 Color Palette
 
-### Primary Colors (Terracotta)
-- `terracotta-50`: #fef7f4
-- `terracotta-500`: #ed7a4a
-- `terracotta-600`: #de5d2a
-- `terracotta-800`: #953d22
+### Primary Colors (Pink)
+- `pink-50`: #fff5f7
+- `pink-500`: #f06292
+- `pink-600`: #ec407a
+- `pink-800`: #c2185b
 
-### Secondary Colors (Beige)
-- `beige-50`: #fefefe
-- `beige-200`: #faf8f5
-- `beige-300`: #f5f1eb
-- `beige-500`: #e0d5c8
+### Secondary Colors (Soft Pink)
+- `soft-pink-50`: #fce4ec
+- `soft-pink-200`: #f8bbd0
+- `soft-pink-300`: #f48fb1
+- `soft-pink-500`: #f06292
