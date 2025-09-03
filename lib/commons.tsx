@@ -23,11 +23,6 @@ export const appRender = [
     render: (section: AppSection) => renderer(section, Hero),
   },
   {
-    name: "Portifólio",
-    href: "showcase",
-    render: (section: AppSection) => renderer(section, Showcase),
-  },
-  {
     name: "Serviços",
     href: "services",
     render: (section: AppSection) => renderer(section, Services),
@@ -36,6 +31,11 @@ export const appRender = [
     name: "Sobre",
     href: "about",
     render: (section: AppSection) => renderer(section, About),
+  },
+  {
+    name: "Portifólio",
+    href: "showcase",
+    render: (section: AppSection) => renderer(section, Showcase),
   },
   {
     name: "CTA",
