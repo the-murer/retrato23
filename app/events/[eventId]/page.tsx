@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/common/button";
 import { Download, ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 interface Event {
   id: string;

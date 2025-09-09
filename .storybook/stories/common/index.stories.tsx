@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Typography } from "../../components/common/typography";
-import { Button } from "../../components/common/button";
-import { Card } from "../../components/common/card";
-import { Section } from "../../components/common/section";
-import Header from "../../components/common/header";
-import Footer from "../../components/common/footer";
-import { Carousel } from "../../components/ui/carousel";
-import { SectionHeader } from "../../components/ui/sectionHeader";
-import { GalleryShowcase } from "../../components/ui/galleryShowcase";
+import { Typography } from "../../../components/common/typography";
+import { Button } from "../../../components/common/button";
+import { Card } from "../../../components/common/card";
+import { Section } from "../../../components/common/section";
+import Header from "../../../components/common/header";
+import Footer from "../../../components/common/footer";
+import { Carousel } from "../../../components/ui/carousel";
+import { SectionHeader } from "../../../components/ui/sectionHeader";
+import { GalleryShowcase } from "../../../components/ui/galleryShowcase";
 import React from "react";
 import Image from "next/image";
 

@@ -34,6 +34,7 @@ export interface InputProps
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   isRequired?: boolean
+  size?: "default" | "sm" | "lg"
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(

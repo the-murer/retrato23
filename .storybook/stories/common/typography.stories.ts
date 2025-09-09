@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { Typography } from "../../components/common/typography";
+import { Typography } from "../../../components/common/typography";
 
 const meta = {
   title: "Example/Typography",
