@@ -1,11 +1,13 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
 export interface Event extends mongoose.Document {
   name: string;
   description: string;
   image: string;
+  photos: string[];
   link: string;
   slug: string;
+  showOnLanding: boolean;
 }
 
 const EventSchema = new mongoose.Schema<Event>({
@@ -17,17 +19,29 @@ const EventSchema = new mongoose.Schema<Event>({
     type: String,
     required: false,
   },
+  // R2 key of the main photo
   image: {
     type: String,
     required: true,
   },
+  // R2 keys of the extra photos, in display order
+  photos: {
+    type: [String],
+    default: [],
+  },
   link: {
     type: String,
-    required: true,
+    required: false,
   },
   slug: {
     type: String,
     required: true,
+    unique: true,
+  },
+  showOnLanding: {
+    type: Boolean,
+    default: false,
+    index: true,
   },
 }, { timestamps: true, collection: "events" });
 

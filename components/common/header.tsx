@@ -14,6 +14,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 backdrop-blur-md bg-background/80">
+      <div className="scroll-progress hidden absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-secondary-400 via-secondary-600 to-primary-600" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <div className="flex-shrink-0">
@@ -34,7 +35,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={`#${item.href}`}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium text-sm uppercase tracking-wide"
+                className="link-draw text-muted-foreground hover:text-foreground font-medium text-xs uppercase tracking-[0.2em]"
               >
                 {item.name}
               </Link>
@@ -45,7 +46,7 @@ export default function Header() {
             <div className="hidden md:block">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-colors duration-300"
+                className="btn-tactile bg-primary hover:bg-primary-900 text-primary-foreground rounded-full px-6 py-2 font-medium tracking-[0.02em]"
               >
                 Agendar Sessão
               </Button>
@@ -76,7 +77,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-3 text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors duration-200 font-medium text-sm uppercase tracking-wide"
+                  className="block px-3 py-3 text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors duration-200 font-medium text-sm uppercase tracking-[0.16em]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -85,7 +86,7 @@ export default function Header() {
               <div className="px-3 py-3">
                 <Button
                   size="sm"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-medium transition-colors duration-300"
+                  className="btn-tactile w-full bg-primary hover:bg-primary-900 text-primary-foreground rounded-full font-medium tracking-[0.02em]"
                 >
                   Agendar Sessão
                 </Button>

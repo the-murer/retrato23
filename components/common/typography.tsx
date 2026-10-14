@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 type Variant = "title" | "subtitle" | "body" | "caption" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 type Color = "brand" | "neutral" | "error" | "warning" | "success" | "default";
@@ -57,7 +57,7 @@ export function Typography({
   const colorClass = color ? colorClasses[color] : defaultColor[variant];
 
   return (
-    <Component className={clsx(variantClasses[variant], colorClass, className)}>
+    <Component className={cn(variantClasses[variant], colorClass, className)}>
       {children}
     </Component>
   );

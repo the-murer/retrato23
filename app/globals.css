@@ -70,30 +70,39 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Warm shadows: every shadow-* utility on the site picks these up */
+  --ease-craft: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-xs: 0 1px 2px rgb(58 45 31 / 0.06);
+  --shadow-sm: 0 1px 2px rgb(58 45 31 / 0.05), 0 2px 6px -2px rgb(58 45 31 / 0.08);
+  --shadow-md: 0 6px 16px -8px rgb(58 45 31 / 0.16), 0 2px 4px -2px rgb(58 45 31 / 0.06);
+  --shadow-lg: 0 14px 32px -16px rgb(58 45 31 / 0.24), 0 4px 8px -4px rgb(58 45 31 / 0.06);
+  --shadow-xl: 0 24px 48px -24px rgb(58 45 31 / 0.30), 0 8px 16px -8px rgb(58 45 31 / 0.08);
+  --shadow-2xl: 0 40px 80px -36px rgb(58 45 31 / 0.40);
 }
 
 :root {
   --radius: 0.625rem;
   
-  /* Light mode colors with new sage green and warm brown palette */
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
+  /* Warm paper & ink neutrals (were cold slate) — harmonize with sage + brown */
+  --background: #faf8f4;
+  --foreground: #1d1b16;
+  --card: #fffdf9;
+  --card-foreground: #1d1b16;
+  --popover: #fffdf9;
+  --popover-foreground: #1d1b16;
   --primary: #43502f;
-  --primary-foreground: #ffffff;
-  --secondary: #f8fafc;
-  --secondary-foreground: #0f172a;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #0f172a;
+  --primary-foreground: #fbf8f2;
+  --secondary: #f3eee5;
+  --secondary-foreground: #1d1b16;
+  --muted: #ece6da;
+  --muted-foreground: #655d50;
+  --accent: #ece6da;
+  --accent-foreground: #1d1b16;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
+  --border: #e3dacb;
+  --input: #e3dacb;
   --ring: #43502f;
   
   /* Chart colors */
@@ -211,6 +220,195 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+  ::selection { background: var(--secondary-300); color: var(--foreground); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Motion ----------
+   Scroll-driven animations are pure CSS (animation-timeline). Browsers without
+   support, and users with reduced motion, simply see the static page. */
+@keyframes float { 50% { transform: translateY(-14px); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(40px); } }
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(calc(48px + var(--d, 0) * 36px)); filter: blur(6px); }
+}
+@keyframes curtain { from { clip-path: inset(100% 0 0 0); } }
+@keyframes settle { from { transform: scale(1.25); } }
+@keyframes hero-exit { to { opacity: 0; transform: translateY(-20vh) scale(0.94); filter: blur(4px); } }
+@keyframes dim { to { opacity: 0.65; } }
+@keyframes progress { from { scale: 0 1; } }
+
+/* AnimatedText: each word is masked; padding keeps descenders and italics unclipped */
+.split-text .word {
+  display: inline-block;
+  overflow: clip;
+  vertical-align: top;
+  padding: 0 0.08em 0.12em;
+  margin: 0 -0.08em -0.12em;
+}
+.split-text .word > span { display: inline-block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .split-text .word > span {
+    transform: translateY(110%) rotate(6deg);
+    transform-origin: left bottom;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  .split-text[data-in] .word > span { transform: none; }
+
+  .animate-float { animation: float 7s ease-in-out infinite; }
+  .animate-fade-in { animation: fade-in 1.6s ease-out both; }
+  .animate-slide-up { animation: slide-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+
+  @supports (animation-timeline: view()) {
+    /* Fade/rise/unblur into place. --d (0,1,2…) staggers siblings in a row.
+       Ends at cover 30%: anything on the page reaches it because the footer sits below. */
+    .reveal {
+      animation: reveal cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    /* Image unveils bottom-up, then keeps slowly settling its zoom while it crosses the screen */
+    .reveal-img {
+      animation: curtain cubic-bezier(0.65, 0, 0.35, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    .reveal-img img {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    /* Hero content drifts up and fades while the hero darkens on the way out */
+    .hero { view-timeline: --hero; }
+    .hero-exit, .hero-dim {
+      animation: hero-exit linear both;
+      animation-timeline: --hero;
+      animation-range: exit;
+    }
+    .hero-dim { animation-name: dim; }
+
+    .scroll-progress {
+      display: block;
+      transform-origin: left;
+      animation: progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+/* ---------- Personality layer ---------- */
+
+/* Paper grain between a section's background and its content. Host must be positioned. */
+.grain { isolation: isolate; }
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.1; /* ponytail: calibration knob — ~0.06 vanishes on phones, 0.14+ looks dusty */
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Accent word: real Cormorant italic + the PhotoScatter highlighter band.
+   --accent-ink / --accent-band can be overridden per section (dark CTA). */
+.accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent-ink, var(--secondary-800));
+  background: linear-gradient(var(--accent-band, var(--secondary-200)), var(--accent-band, var(--secondary-200))) no-repeat 0 88% / 100% 0.28em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Editorial caption, same voice as the PhotoScatter figcaptions */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  flex-shrink: 0;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* Viewfinder crop marks on photos. Host must be positioned. */
+.viewfinder::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  z-index: 20;
+  pointer-events: none;
+  --c: rgb(255 255 255 / 0.85);
+  --s: 18px;
+  --w: 1.5px;
+  background:
+    linear-gradient(var(--c) 0 0) 0 0 / var(--s) var(--w),
+    linear-gradient(var(--c) 0 0) 0 0 / var(--w) var(--s),
+    linear-gradient(var(--c) 0 0) 100% 0 / var(--s) var(--w),
+    linear-gradient(var(--c) 0 0) 100% 0 / var(--w) var(--s),
+    linear-gradient(var(--c) 0 0) 0 100% / var(--s) var(--w),
+    linear-gradient(var(--c) 0 0) 0 100% / var(--w) var(--s),
+    linear-gradient(var(--c) 0 0) 100% 100% / var(--s) var(--w),
+    linear-gradient(var(--c) 0 0) 100% 100% / var(--w) var(--s);
+  background-repeat: no-repeat;
+}
+
+/* Tactile button: inset highlight, warm shadow, press. Ships its own focus outline. */
+.btn-tactile {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), 0 1px 2px rgb(58 45 31 / 0.18), 0 8px 18px -10px rgb(58 45 31 / 0.45);
+}
+.btn-tactile:active { box-shadow: inset 0 1px 3px rgb(30 32 26 / 0.3); }
+.btn-tactile:focus-visible { outline: 2px solid var(--focus, var(--ring)); outline-offset: 3px; }
+
+/* Underline that draws in from the left */
+.link-draw {
+  background: linear-gradient(currentColor, currentColor) no-repeat left bottom / 0% 1px;
+  padding-bottom: 2px;
+}
+.link-draw:focus-visible { background-size: 100% 1px; }
+
+@media (hover: hover) {
+  .link-draw:hover { background-size: 100% 1px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-tactile { transition: background-color .3s, color .3s, border-color .3s, box-shadow .3s, translate .15s; }
+  .btn-tactile:active { translate: 0 1px; }
+  .btn-tactile > svg:last-child { transition: translate .5s var(--ease-craft); }
+  .link-draw { transition: color .3s, background-size .6s var(--ease-craft); }
+  .eyebrow::before { transition: width .6s var(--ease-craft); }
+  .viewfinder::before { transition: inset .6s var(--ease-craft); }
+
+  /* Highlighter sweeps in right after AnimatedText reveals the word */
+  @supports selector(:has(*)) {
+    .accent { background-size: 0 0.28em; transition: background-size 1.1s var(--ease-craft) 0.6s; }
+    .accent:has(.split-text[data-in]) { background-size: 100% 0.28em; }
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn-tactile:hover > svg:last-child { translate: 4px 0; }
+  .group:hover .eyebrow::before { width: 2.5rem; }
+  .group:hover .viewfinder::before, .group.viewfinder:hover::before { inset: 20px; }
 }

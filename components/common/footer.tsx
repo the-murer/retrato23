@@ -43,7 +43,7 @@ export default function Footer() {
   const { theme } = useTheme();
 
   return (
-    <footer className="bg-secondary border-t border-border/50">
+    <footer className="grain relative bg-secondary border-t border-border/70">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -68,11 +68,11 @@ export default function Footer() {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 bg-background rounded-full flex items-center justify-center text-primary-600 hover:text-primary-700 hover:bg-primary-50 transition-colors duration-300 shadow-sm"
+                  className="w-10 h-10 rounded-full border border-primary-300 bg-card flex items-center justify-center text-primary-700 transition-colors duration-300 hover:bg-primary hover:border-primary hover:text-primary-foreground"
                   aria-label={social.name}
                   target="_blank"
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-[18px] w-[18px] stroke-[1.5]" />
                 </Link>
               ))}
             </div>
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-display font-light text-xl text-foreground mb-6">
+            <h3 className="eyebrow flex mb-6 text-muted-foreground">
               Links Rápidos
             </h3>
             <ul className="space-y-3">
@@ -88,7 +88,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm uppercase tracking-wide"
+                    className="link-draw font-display text-xl italic text-foreground/80 hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -98,13 +98,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display font-light text-xl text-foreground mb-6">
+            <h3 className="eyebrow flex mb-6 text-muted-foreground">
               Contato
             </h3>
-            <div className="space-y-4 text-sm text-muted-foreground">
+            <div className="space-y-4 text-sm text-foreground/85">
               {contactInfo.map((social) => (
                 <div key={social.name}>
-                  <p className="font-medium text-foreground mb-1">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground mb-1">
                     {social.name}
                   </p>
                   <p>{social.href}</p>
@@ -114,20 +114,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border/50 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center">
+        <div className="border-t border-border/70 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} Retrato 23. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             <Link
               href="#"
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300"
+              className="link-draw text-muted-foreground hover:text-foreground text-sm"
             >
               Privacy Policy
             </Link>
             <Link
               href="#"
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-300"
+              className="link-draw text-muted-foreground hover:text-foreground text-sm"
             >
               Terms of Service
             </Link>

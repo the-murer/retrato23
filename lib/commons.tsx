@@ -2,6 +2,7 @@ import CTA from "@/components/sections/CTA";
 import About from "@/components/sections/Experience";
 import Showcase from "@/components/sections/Features";
 import Hero from "@/components/sections/Hero";
+import PhotoScatter from "@/components/sections/PhotoScatter";
 import Services from "@/components/sections/Services";
 
 export type AppSection = {
@@ -21,6 +22,11 @@ export const appRender = [
     name: "Hero",
     href: "hero",
     render: (section: AppSection) => renderer(section, Hero),
+  },
+  {
+    name: "Galeria",
+    href: "gallery",
+    render: (section: AppSection) => renderer(section, PhotoScatter),
   },
   {
     name: "Portifólio",

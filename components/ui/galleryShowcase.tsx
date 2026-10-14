@@ -1,3 +1,4 @@
+import { AnimatedText } from "@/components/ui/animatedText";
 import { ProjectCard } from "@/components/ui/projectCard";
 
 export interface Project {
@@ -28,20 +29,20 @@ export function GalleryShowcase({
     <section className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            {title}
+          <h1 className="font-display text-4xl lg:text-5xl font-medium italic tracking-[-0.01em] text-foreground mb-4">
+            <AnimatedText text={title} />
           </h1>
           {description && (
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="reveal text-xl text-muted-foreground max-w-3xl mx-auto">
               {description}
             </p>
           )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {items.map((project) => (
+          {items.map((project, index) => (
+            <div key={project.id} className="reveal" style={{ "--d": index % 3 } as React.CSSProperties}>
             <ProjectCard
-              key={project.id}
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl}
@@ -49,6 +50,7 @@ export function GalleryShowcase({
               tags={project.tags}
               link={project.link}
             />
+            </div>
           ))}
         </div>
       </div>

@@ -23,13 +23,13 @@ export function ProjectCard({
   year
 }: ProjectCardProps) {
   const cardContent = (
-    <Card className="group h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+    <Card className="group h-full overflow-hidden border-border/70 transition-[translate,box-shadow] duration-500 ease-craft hover:-translate-y-1 hover:shadow-lg">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={imageUrl}
           alt={imageAlt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-craft group-hover:scale-[1.04]"
         />
         {(category || year) && (
           <div className="absolute top-3 left-3 flex gap-2">
@@ -47,7 +47,7 @@ export function ProjectCard({
         )}
       </div>
       <CardHeader className="pb-3">
-        <CardTitle className="text-xl font-semibold text-foreground">
+        <CardTitle className="font-display text-2xl font-medium text-foreground">
           {title}
         </CardTitle>
         <CardDescription className="text-muted-foreground">
@@ -72,8 +72,14 @@ export function ProjectCard({
   )
 
   if (link) {
+    const external = /^https?:\/\//.test(link)
     return (
-      <a href={link} target="_blank" rel="noopener noreferrer" className="block h-full">
+      <a
+        href={link}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className="block h-full"
+      >
         {cardContent}
       </a>
     )
